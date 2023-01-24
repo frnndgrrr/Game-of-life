@@ -9,7 +9,7 @@ function App() {
       <GridProvider>
         <Title title="Game of Life" />
         <div className="row g-0">
-          <Grid rows={15} cols={15} />
+          <Grid />
           <Settings />
         </div>
       </GridProvider>

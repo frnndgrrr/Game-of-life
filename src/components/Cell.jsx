@@ -1,13 +1,13 @@
 function Cell({ value }) {
   const cellStyling = {
-    height: "40px",
-    width: "40px",
+    height: "15px",
+    width: "15px",
   };
 
   return (
     <div
-      className={`col text-center rounded-circle bg-gradient bg-${
-        value ? "success" : "light"
+      className={`col rounded-2 bg-gradient bg-${
+        value ? "primary" : "light"
       }`}
       style={cellStyling}
     ></div>

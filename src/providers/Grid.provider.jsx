@@ -2,10 +2,13 @@ import { createContext, useReducer } from "react";
 import gridReducer from '../reducers/Grid.reducer'
 import { generateRandomGrid } from "../utils/functions";
 
+const rows = 50;
+const cols = 65;
+
 const initState = {
-  grid: generateRandomGrid(15,15),
-  rows: 15,
-  cols: 15,
+  grid: generateRandomGrid(cols, rows),
+  rows,
+  cols,
   tick: 500
 }
 

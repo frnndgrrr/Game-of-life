@@ -20,7 +20,12 @@ function Settings() {
 
   function handleRun(e) {
     e.preventDefault();
-    dispatch({ type: 'TICK'})
+    dispatch({ type: "TICK" });
+  }
+
+  function handleRandomize(e) {
+    e.preventDefault();
+    dispatch({ type: "GENERATE_RANDOM_GRID" });
   }
 
   return (
@@ -50,11 +55,14 @@ function Settings() {
             value={cols}
           />
 
-          <div className="d-flex justify-content-evenly p-2">
-            <button className="btn btn-primary" onClick={handleRun}>
+          <div className="d-flex flex-column justify-content-between py-2">
+            <button className="btn btn-success my-1" onClick={handleRun}>
               Run
             </button>
-            <button className="btn btn-danger" onClick={handleStop}>
+            <button className="btn btn-primary my-1" onClick={handleRandomize}>
+              Random
+            </button>
+            <button className="btn btn-danger my-1" onClick={handleStop}>
               Stop
             </button>
           </div>
