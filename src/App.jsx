@@ -1,15 +1,18 @@
 import Grid from "./components/Grid";
-import Controls from "./components/Controls";
+import Settings from "./components/Settings";
 import Title from "./components/Title";
+import { GridProvider } from "./providers/Grid.provider";
 
 function App() {
   return (
     <div className="container mx-auto">
-      <Title title="Game of Life"/>
-      <div className="row g-0">
-        <Grid rows={15} cols={15} />
-        <Controls />
-      </div>
+      <GridProvider>
+        <Title title="Game of Life" />
+        <div className="row g-0">
+          <Grid rows={15} cols={15} />
+          <Settings />
+        </div>
+      </GridProvider>
     </div>
   );
 }

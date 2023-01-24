@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import GridContext from "../providers/Grid.provider";
 import Cell from "./Cell";
-import { generateRandomGrid } from "../utils/functions";
 
 function renderGrid(grid) {
   return grid.map((row) => {
@@ -14,8 +15,12 @@ function renderGrid(grid) {
   })
 }
 
-function Grid({ rows = 10, cols = 10}) {
-  const [grid, setGrid] = useState(generateRandomGrid(rows, cols));
+function Grid() {
+  const { grid, dispatch } = useContext(GridContext);
+  
+  useEffect(() => {
+    dispatch('GENERATE_RANDOM_GRID');
+  }, []);
 
   return (
     <div className="col-9">
