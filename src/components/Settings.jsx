@@ -16,10 +16,6 @@ function Settings() {
     }
   }
 
-  function handleStop() {
-    dispatch({ type: "RUN_BLINKER" });
-  }
-
   return (
     <div className="col-4">
       <div className="container border border-3 border-dark bg-light rounded-3 p-3 text-center">
@@ -41,10 +37,7 @@ function Settings() {
 
         <div className="d-flex flex-column justify-content-between py-2">
           <button className="btn btn-primary my-1" onClick={handleRun}>
-            Run
-          </button>
-          <button className="btn btn-danger my-1" onClick={handleStop}>
-            Stop
+            Select
           </button>
         </div>
       </div>
