@@ -3,20 +3,20 @@ import GridContext from "../providers/Grid.provider";
 
 function Settings() {
   const { dispatch } = useContext(GridContext);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState("GENERATE_RANDOM_GRID");
 
   function handleSelect(e) {
     const action = e.target.value;
     setOption(action);
   }
 
-  function handleRun(e) {
-    e.preventDefault();
-    dispatch({ type: option });
+  function handleRun() {
+    if(option) {
+      dispatch({ type: option });
+    }
   }
 
-  function handleStop(e) {
-    e.preventDefault();
+  function handleStop() {
     dispatch({ type: "RUN_BLINKER" });
   }
 
