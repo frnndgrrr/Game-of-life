@@ -1,25 +1,16 @@
 import { generateRandomGrid } from "../utils/functions";
 import { runNewGeneration } from "../logic";
-import { blinker } from "../patterns/blinker";
+import { blinker, toad, beacon } from "../patterns/oscillators";
+import { glider, lightweightSpaceship } from "../patterns/spaceships";
 
 export default function gridReducer(state, action) {
   switch (action.type) {
-    case "SET_COLS":
-      return {
-        ...state,
-        cols: action.payload,
-      };
-
-    case "SET_ROWS":
-      return {
-        ...state,
-        rows: action.payload,
-      };
-
     case "GENERATE_RANDOM_GRID":
       return {
         ...state,
-        grid: generateRandomGrid(state.rows, state.cols),
+        rows: 50,
+        cols: 50,
+        grid: generateRandomGrid(50, 50),
       };
 
     case "GENERATE_GRID":
@@ -31,9 +22,41 @@ export default function gridReducer(state, action) {
     case "RUN_BLINKER":
       return {
         ...state,
-        rows: 5,
-        cols: 5,
+        rows: blinker.length,
+        cols: blinker.length,
         grid: blinker,
+      };
+
+    case "RUN_TOAD":
+      return {
+        ...state,
+        rows: toad.length,
+        cols: toad.length,
+        grid: toad,
+      };
+
+    case "RUN_BEACON":
+      return {
+        ...state,
+        rows: beacon.length,
+        cols: beacon.length,
+        grid: beacon,
+      };
+
+    case "RUN_GLIDER":
+      return {
+        ...state,
+        rows: glider.length,
+        cols: glider.length,
+        grid: glider,
+      };
+
+    case "RUN_LIGHTWEIGHT":
+      return {
+        ...state,
+        rows: lightweightSpaceship.length,
+        cols: lightweightSpaceship.length,
+        grid: lightweightSpaceship,
       };
 
     default:

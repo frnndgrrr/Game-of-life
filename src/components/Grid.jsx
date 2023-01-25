@@ -26,22 +26,24 @@ function Grid() {
     });
   }
 
-  // Run a randomly generated grid on first render.
   useEffect(() => {
+    // Run a randomly generated grid on first render.
     dispatch({ type: "GENERATE_RANDOM_GRID" });
 
+    // attach an interval to generate next grids periodically.
     const interval = setInterval(() => {
       dispatch({ type: "GENERATE_GRID" });
     }, 500);
 
+    // clean interval when component gets destroyed.
     return () => {
       clearInterval(interval);
     };
   }, []);
 
   return (
-    <div className="col-9">
-      <div className="container border border-3 border-dark my-auto bg-light rounded-3 p-3">
+    <div className="col-8">
+      <div className="container border border-3 border-dark my-auto bg-light rounded-3 p-3 text-center">
         <Canvas draw={drawCanvas} width={cols * 10} height={rows * 10} />
       </div>
     </div>
