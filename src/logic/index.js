@@ -1,5 +1,9 @@
 import { createEmptyArray } from "../utils/functions";
 
+// Cycle through the surroundings of a cell
+// using a -1 to +1 range starting from x and y coordinates.
+// Note: It is possible to calculate a wrap around
+// the grid by using the modulus operator.
 function sumNeighbours(grid, x, y, cols, rows) {
   let sum = 0;
   for (let i = -1; i < 2; i++) {
@@ -13,12 +17,20 @@ function sumNeighbours(grid, x, y, cols, rows) {
   return sum;
 }
 
+// Evaluate rules for next status of the cell
 function applyRules(isAlive, neighbours) {
+  // Dead cell & 3 neighbours => reproduction
   if (isAlive === 0 && neighbours === 3) {
     return 1;
-  } else if (isAlive === 1 && (neighbours < 2 || neighbours > 3)) {
+  }
+  // Alive cell & less than 2 neighbours => underpopulation
+  // Alive cell & more than 3 neighbours => overpopulation
+  else if (isAlive === 1 && (neighbours < 2 || neighbours > 3)) {
     return 0;
-  } else {
+  }
+  // Any Alive cell with 2 or 3 live neighbours survives.
+  // (Remains the same)
+  else {
     return isAlive;
   }
 }
