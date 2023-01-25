@@ -1,5 +1,6 @@
 import { generateRandomGrid } from "../utils/functions";
 import { runNewGeneration } from "../logic";
+import { blinker } from "../patterns/blinker";
 
 export default function gridReducer(state, action) {
   switch (action.type) {
@@ -16,17 +17,23 @@ export default function gridReducer(state, action) {
       };
 
     case "GENERATE_RANDOM_GRID":
-      console.log("GENERATE_RANDOM_GRID");
       return {
         ...state,
         grid: generateRandomGrid(state.rows, state.cols),
       };
 
-    case "TICK":
-      console.log("TICK");
+    case "GENERATE_GRID":
       return {
         ...state,
-        grid: runNewGeneration(state.grid),
+        grid: runNewGeneration(state.grid, state.rows, state.cols),
+      };
+
+    case "RUN_BLINKER":
+      return {
+        ...state,
+        rows: 5,
+        cols: 5,
+        grid: blinker,
       };
 
     default:

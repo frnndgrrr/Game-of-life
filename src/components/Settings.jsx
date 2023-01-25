@@ -1,10 +1,6 @@
 import { useContext } from "react";
 import GridContext from "../providers/Grid.provider";
 
-function handleStop(e) {
-  e.preventDefault();
-}
-
 function Settings() {
   const { rows, cols, dispatch } = useContext(GridContext);
 
@@ -20,7 +16,12 @@ function Settings() {
 
   function handleRun(e) {
     e.preventDefault();
-    dispatch({ type: "TICK" });
+    dispatch({ type: "GENERATE_GRID" });
+  }
+
+  function handleStop(e) {
+    e.preventDefault();
+    dispatch({ type: "RUN_BLINKER" });
   }
 
   function handleRandomize(e) {
@@ -33,7 +34,7 @@ function Settings() {
       <div className="container border border-3 border-dark bg-light rounded-3 p-3">
         <h3 className="h3">Settings</h3>
         <form>
-          <label htmlFor="Rows" className="form-label">
+          {/* <label htmlFor="Rows" className="form-label">
             Rows
           </label>
           <input
@@ -45,7 +46,7 @@ function Settings() {
           />
 
           <label htmlFor="Cols" className="form-label">
-            Cols
+            Columns
           </label>
           <input
             type="number"
@@ -53,14 +54,14 @@ function Settings() {
             onChange={changeCols}
             min="15"
             value={cols}
-          />
+          /> */}
 
           <div className="d-flex flex-column justify-content-between py-2">
-            <button className="btn btn-success my-1" onClick={handleRun}>
-              Run
-            </button>
             <button className="btn btn-primary my-1" onClick={handleRandomize}>
               Random
+            </button>
+            <button className="btn btn-success my-1" onClick={handleRun}>
+              Run
             </button>
             <button className="btn btn-danger my-1" onClick={handleStop}>
               Stop
