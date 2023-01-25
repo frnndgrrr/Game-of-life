@@ -1,4 +1,4 @@
-function generateRandomCell() {
+export function generateRandomCell() {
   return Math.floor(Math.random() * 100) % 2;
 }
 
