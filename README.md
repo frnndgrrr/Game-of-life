@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Game of Life 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project sets an implementation of Conway's Game of Life in a React app. 
 
-## Available Scripts
+## Scripts
 
 In the project directory, you can run:
 
@@ -19,52 +19,46 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The implementation is hold inside the src folder in the following split:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Components 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Holds the code for components used in this project
 
-### `npm run eject`
+#### `Canvas.jsx`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Simple Canvas component with width, height and draw props. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### `Grid.jsx`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Canvas Wrapper component that defines draw functions and dispatches first Random Grid and sets interval for new generation grids. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### `Settings.jsx`
 
-## Learn More
+Panel with a Select element used to change between Random Generated Grid and some example patterns by using dispatch.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### `Title.jsx`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Simple Title component that holds its own styling.
 
-### Code Splitting
+### Logic
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Holds an `index.js` file with implementation logic split into three functions. 
 
-### Analyzing the Bundle Size
+### Patterns
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Uses `oscillator.js` and `spaceship.js`  files to export patterns as constants for the App.
 
-### Making a Progressive Web App
+### Providers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Specifies a `grid.provider.jsx` file for state distribution in the solution. 
 
-### Advanced Configuration
+### Reducers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Declares a `grid.reducer.js` file for state processing based on grid generation and pattern setting actions. 
 
-### Deployment
+### Utils 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Holds a `functions.js` that declares a set of utility functions, as well as a `functions.test.js` that runs test cases for them. 
